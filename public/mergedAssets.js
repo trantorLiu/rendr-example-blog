@@ -4345,7 +4345,6 @@ module.exports.id = 'Posts';
       model: {model: 'post', params: params, ensureKeys: ['title']}
     };
     this.app.fetch(spec, function(err, result) {
-      console.log(result, 1111);
       callback(err, 'posts_del_view', result);
     });
   }
@@ -4549,19 +4548,16 @@ module.exports = BaseView.extend({
   className: 'posts_del_view',
   postInitialize: function() {
     this.post = this.getTemplateData();
-    console.log(this.getTemplateData(), 222);
-    console.log(this.post,3333);
+    console.log(this.pots);
   },
   events: {
     'click .del': 'del'
   },
   del: function() {
     var that, promise;
-    console.log(this.post,444);
     promise = this.post.destroy();
     promise
     .success(function() {
-      console.log(arguments, 222);
       that.app.router.redirectTo('/posts');
     })
     .error(function() {

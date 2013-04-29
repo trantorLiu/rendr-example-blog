@@ -12,3 +12,5 @@ grunt && node index.js
 #production mode
 grunt server
 ```
+## LICENSE
+MIT
