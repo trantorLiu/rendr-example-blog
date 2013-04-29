@@ -4,14 +4,14 @@ var mongoose = require('mongoose'),
     _ = require('underscore');
 
 PostSchema.statics.get = function(req, api, callback) {
-  console.log(api);
   var id = req.param('id');
-  console.log(req.params);
-  console.log(id);
   if (id) {
     this.findById(id).exec(callback);
   } else {
-    this.find().exec(callback);
+    this
+    .find()
+    .where('del', false)
+    .exec(callback);
   }
 };
 
@@ -25,11 +25,12 @@ PostSchema.statics.post = function(req, api, callback) {
 };
 
 PostSchema.statics.put = function(req, api, callback) {
-  var update, data, options, post;
+  var id, update, data, options, post;
+  id = req.param('id');
 
-  if (!api.id) return callback('Cannot update without id');
+  if (!id) return callback('Cannot update without id');
 
-  update = {_id: api.id};
+  update = {_id: id};
   data = _.pick(req.body, ['title', 'body']);
   options = {};
 
@@ -37,9 +38,10 @@ PostSchema.statics.put = function(req, api, callback) {
 };
 
 PostSchema.statics.del = function(req, api, callback) {
-  if (!api.id) return callback('Cannot delete without id');
+  var id = req.param('id');
+  if (!id) return callback('Cannot delete without id');
 
-  this.update({_id: api.id}, {del: true}, callback);
+  this.update({_id: id}, {del: true}, callback);
 
 };
 

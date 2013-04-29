@@ -3,14 +3,16 @@ var BaseView = require('./base_view');
 module.exports = BaseView.extend({
   className: 'posts_del_view',
   postInitialize: function() {
-    this.post = this.getTemplateData();
+    console.log(this.model, 77);
+    console.log(this.options,88);
   },
   events: {
     'click .del': 'del'
   },
   del: function() {
     var that, promise;
-    promise = this.post.destroy();
+    that = this;
+    promise = this.model.destroy();
     promise
     .success(function() {
       that.app.router.redirectTo('/posts');

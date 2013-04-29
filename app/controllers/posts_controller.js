@@ -1,9 +1,14 @@
 module.exports = {
   index: function(params, callback) {
-    var spec = {
+    var spec, options;
+    spec = {
       collection: {collection: 'posts', params: params}
     };
-    this.app.fetch(spec, function(err, result) {
+    options = {
+      readFromCache: false,
+      writeToCache: true
+    }
+    this.app.fetch(spec, options, function(err, result) {
       callback(err, 'posts_index_view', result);
     });
   },
@@ -17,7 +22,6 @@ module.exports = {
       model: {model: 'post', params: params, ensureKeys: ['title']}
     };
     this.app.fetch(spec, function(err, result) {
-      console.log(result, 2222);
       callback(err, 'posts_show_view', result);
     });
   },
@@ -36,6 +40,7 @@ module.exports = {
       model: {model: 'post', params: params, ensureKeys: ['title']}
     };
     this.app.fetch(spec, function(err, result) {
+      console.log(result, 111);
       callback(err, 'posts_del_view', result);
     });
   }

@@ -19,7 +19,7 @@ function DataAdapter(options) {
 // `callback`: Callback.
 //
 DataAdapter.prototype.request = function(req, api, options, callback) {
-  var Model;
+  var Model, method;
 
   if (arguments.length === 3) {
     callback = options;
@@ -29,7 +29,9 @@ DataAdapter.prototype.request = function(req, api, options, callback) {
   Model = getModel(api);
   if (!Model) return callback(new Error('Model not found'));
 
-  Model[api.method.toLowerCase()](req, api, function(err, body) {
+  method = api.method.toLowerCase().replace('delete', 'del');
+
+  Model[method](req, api, function(err, body) {
     var res = {
       statusCode: 200 // TODO Rules to determine statusCode.
     };

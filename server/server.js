@@ -102,7 +102,18 @@ var preRendrMiddleware = [
 ];
 
 function buildApiRoutes(app) {
-  var fnChain = preRendrMiddleware.concat(rendrMw.apiProxy());
+  var fnChain, api, goNext;
+
+  api = '/api';
+  goNext = function(req, res, next) {
+    next();
+  };
+
+  app.get(api + '/posts/:id', goNext);
+  app.put(api + '/posts/:id', goNext);
+  app.del(api + '/posts/:id', goNext);
+
+  fnChain = preRendrMiddleware.concat(rendrMw.apiProxy());
   fnChain.forEach(function(fn) {
     app.use('/api', fn);
   });

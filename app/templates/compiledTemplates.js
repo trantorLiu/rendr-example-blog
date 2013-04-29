@@ -18,8 +18,8 @@ helpers = helpers || Handlebars.helpers; data = data || {};
 
 
   buffer += "<p>Sure to delete?</p>\n<div>\n<button class=\"btn btn-danger del\">Delete it!</button>\n<a href=\"/posts/";
-  if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if (stack1 = helpers._id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0._id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "\" class=\"btn\">Cancel</a>\n</div>\n";
   return buffer;
@@ -64,8 +64,8 @@ function program1(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n    <li>\n      <a href=\"/posts/";
-  if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if (stack1 = helpers._id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0._id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "\">";
   if (stack1 = helpers.title) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
@@ -97,8 +97,8 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   else { stack1 = depth0.body; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "</p>\n</div>\n<div class=\"well\">\n  <a href=\"/posts\" class=\"btn btn-primary\">Back to posts</a>\n  <a href=\"/posts/del/";
-  if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if (stack1 = helpers._id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0._id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "\" class=\"btn btn-danger del\">Delete</a>\n</div>\n";
   return buffer;
