@@ -1,0 +1,13 @@
+<h3>Posts</h3>
+
+<div class="well">
+  <ul>
+  {{#each models}}
+    <li>
+      <a href="/posts/{{id}}">{{title}}</a>
+    </li>
+  {{/each}}
+  </ul>
+</div>
+
+<a class="btn" href="/posts/edit">New post</a>
