@@ -3,8 +3,7 @@ var BaseView = require('./base_view');
 module.exports = BaseView.extend({
   className: 'posts_del_view',
   postInitialize: function() {
-    console.log(this.model, 77);
-    console.log(this.options,88);
+    console.log('this.model in psots_del_view: ' + this.model);
   },
   events: {
     'click .del': 'del'
